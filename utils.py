@@ -1,8 +1,6 @@
 import io
 import yaml
 
-def add_user_to_yaml(user, json):
-    raise NotImplementedError
 
 def add_policy_to_all_users(policy, users, user_yaml):
     """ useryaml tools"""
@@ -35,3 +33,11 @@ def add_policy_to_all_users(policy, users, user_yaml):
         yaml.dump(data_loaded, outfile, default_flow_style=False, allow_unicode=True)
 
     print("End!!!")
+
+
+def add_user_to_yaml(user, common_json, json_block):
+    raise NotImplementedError
+
+
+def remove_user_from_yaml(user, common_json):
+    raise NotImplementedError
