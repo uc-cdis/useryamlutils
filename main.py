@@ -55,16 +55,17 @@ ALL_COMMONS = ["accountprod",
                "stagingdatastage",
                "vadcprod"]
 
-def add_policy_for_users(root, users, policy):
+def add_policy_for_users(root, users, commons, policy):
     """
     Add policy
-    :param root: path to common users. Ex. /Users/giangbui/Projects/commons-users/user
-    :param users: list of users
+    :param root: path to common users. Ex. /Users/giangbui/Projects/commons-users/user\
+    :param users: list of users\
+    :param commons: list of commons\
     :param policy: policy
     :return:
     """
 
-    for common in ALL_COMMONS:
+    for common in commons:
         add_policy_to_all_users(policy, users, root + "/" + common + "/user.yaml")
 
 
@@ -86,7 +87,7 @@ def cli1():
 @click.option('--policy', required=True, help='policy')
 def add_policy(root, policy):
     """add policy."""
-    add_policy_for_users(root, policy, ALL_DEV_USERS)
+    add_policy_for_users(root, ALL_DEV_USERS, ALL_COMMONS, policy)
 
 
 cli = click.CommandCollection(sources=[cli1])
