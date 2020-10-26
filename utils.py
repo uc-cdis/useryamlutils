@@ -4,18 +4,20 @@ import re
 
 
 def add_policy_to_all_users_str(policy, users, user_yaml):
-    with open(user_yaml, 'r') as stream:
+    with open(user_yaml, "r") as stream:
         lines = stream.readlines()
 
     for idx, line in enumerate(lines):
         for user in users:
             if user in line:
-                if "policies: [" in lines[idx+2] and "admin:" in lines[idx+1]:
-                    m = re.search(': \[(.+?)\]', lines[idx+2])
-                    if m and policy not in lines[idx+2]:
+                if "policies: [" in lines[idx + 2] and "admin:" in lines[idx + 1]:
+                    m = re.search(": \[(.+?)\]", lines[idx + 2])
+                    if m and policy not in lines[idx + 2]:
                         substr = m.group(1)
-                        lines[idx+2] = lines[idx+2].replace(substr, substr + ", {}".format(policy))
-    with open(user_yaml, 'w') as stream:
+                        lines[idx + 2] = lines[idx + 2].replace(
+                            substr, substr + ", {}".format(policy)
+                        )
+    with open(user_yaml, "w") as stream:
         for item in lines:
             stream.write("%s" % item)
 
@@ -23,10 +25,10 @@ def add_policy_to_all_users_str(policy, users, user_yaml):
 def add_policy_to_all_users(policy, users, user_yaml):
     """ useryaml tools"""
 
-    with open(user_yaml, 'r') as stream:
+    with open(user_yaml, "r") as stream:
         data_loaded = yaml.safe_load(stream)
 
-    policies = data_loaded['rbac']['policies']
+    policies = data_loaded["rbac"]["policies"]
 
     found = False
     for pl in policies:
