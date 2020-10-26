@@ -19,7 +19,7 @@ ALL_PLAX_DEV_USERS = [
     "rudyardrichter@uchicago.edu",
     "thanhnd@uchicago.edu",
     "vzpgb@uchicago.edu",
-    "yajingt@uchicago.edu"
+    "yajingt@uchicago.edu",
 ]
 
 ALL_DEV_USERS = ALL_PLAX_DEV_USERS + [
@@ -29,7 +29,8 @@ ALL_DEV_USERS = ALL_PLAX_DEV_USERS + [
     "mikeabreu@uchicago.edu",
     "kuangx@uchicago.edu",
     "zgowani@uchicago.edu",
-    "zlchitty@uchicago.edu"]
+    "zlchitty@uchicago.edu",
+]
 
 ALL_BIO_USERS = [
     "cgmeyer@uchicago.edu",
@@ -37,23 +38,26 @@ ALL_BIO_USERS = [
     "yilinxu@uchicago.edu",
 ]
 
-ALL_COMMONS = ["accountprod",
-               "anvil",
-               "anvilstaging",
-               "bpa",
-               "canine",
-               "cvb",
-               "dcfqa",
-               "dcp",
-               "dev",
-               "edc",
-               "genomel",
-               "kfqa",
-               "ncicrdcdemo",
-               "ndh",
-               "qa",
-               "stagingdatastage",
-               "vadcprod"]
+ALL_COMMONS = [
+    "accountprod",
+    "anvil",
+    "anvilstaging",
+    "bpa",
+    "canine",
+    "cvb",
+    "dcfqa",
+    "dcp",
+    "dev",
+    "edc",
+    "genomel",
+    "kfqa",
+    "ncicrdcdemo",
+    "ndh",
+    "qa",
+    "stagingdatastage",
+    "vadcprod",
+]
+
 
 def add_policy_for_users(root, users, commons, policy):
     """
@@ -83,8 +87,8 @@ def cli1():
 
 
 @cli1.command()
-@click.option('--root', required=True, help='path to common users dir')
-@click.option('--policy', required=True, help='policy')
+@click.option("--root", required=True, help="path to common users dir")
+@click.option("--policy", required=True, help="policy")
 def add_policy(root, policy):
     """add policy."""
     add_policy_for_users(root, ALL_DEV_USERS, ALL_COMMONS, policy)
